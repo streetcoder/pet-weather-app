@@ -8,6 +8,15 @@ block content
 
     hr
 
+    if (messages.error)
+        .alert.alert-danger
+            span= messages.error
+
+    if (messages.success)
+        .alert.alert-success
+            span= messages.success
+
+    a(href='/' ) back to home
     .row
         .col-4.mx-auto.col-md-6
             h3.display-8.m-b-2 Add Pet
@@ -15,7 +24,7 @@ block content
             form(method='POST' action='/add')
                 div.form-group
                     label(for='name') Name:
-                    input#name.form-control(type='text', placeholder='name' name='name')
+                    input#name.form-control(type='text', placeholder='name' name='name' required)
                 div.form-group
                     label(for='type') Type:
                     select#type.form-control(name='type')
@@ -32,7 +41,7 @@ block content
                         option(value="Shiba") Shiba
                 div.form-group
                     label(for='location') Location:
-                    input#location.form-control(type='text' name='location')
+                    input#location.form-control(type='text' name='location' required)
                 div.form-group
                     label(for='latitude') Latitude:
                     input#latitude.form-control(type='text' name='latitude')

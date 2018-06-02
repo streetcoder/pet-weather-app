@@ -31,11 +31,17 @@ router.post('/add', function(req, res, next) {
              longitude: req.body.longitude}},
         function(err,httpResponse,body){
 
-        if (err)
-            console.log(err)
-        res.redirect('/');
+            var api_res = JSON.parse(body);
 
-    });
+            if(api_res.status == 'error'){
+                req.flash('error', api_res.message);
+                res.redirect('/add');
+            }else{
+                req.flash('success', api_res.message);
+                res.redirect('/');
+            }
+
+        });
 
 });
 

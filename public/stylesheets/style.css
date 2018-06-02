@@ -12,12 +12,6 @@ h1, h2, h3{
   color: #4d4d4d;
 }
 
-
-hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .container {
   max-width: 960px;
 }

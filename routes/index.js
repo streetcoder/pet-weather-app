@@ -17,9 +17,10 @@ router.get('/', function(req, res, next) {
 
     request.get(api_base + endpoint, function (error, response, body) {
 
-        if(error) {
-            return console.dir(error);
-        }
+        var api_res = JSON.parse(body);
+
+        if(api_res.status == 'error')
+            req.flash('error', api_res.message);
 
         res.render('index', { data: JSON.parse(body), api_base: api_base, end_point: endpoint });
 
@@ -27,7 +28,5 @@ router.get('/', function(req, res, next) {
     });
 
 });
-
-
 
 module.exports = router;
