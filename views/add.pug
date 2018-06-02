@@ -1,0 +1,42 @@
+extends layout
+
+block content
+
+  div.container
+
+    h2.text-center Add a New Pet
+
+    hr
+
+    .row
+        .col-4.mx-auto.col-md-6
+            h3.display-8.m-b-2 Add Pet
+
+            form(method='POST' action='/add')
+                div.form-group
+                    label(for='name') Name:
+                    input#name.form-control(type='text', placeholder='name' name='name')
+                div.form-group
+                    label(for='type') Type:
+                    select#type.form-control(name='type')
+                        option(value="Cat") Cat
+                        option(value="Dog") Dog
+                div.form-group
+                    label(for='breed') Breed:
+                    select#breed.form-control(name='breed')
+                        option(value="Beagle") Beagle
+                        option(value="Brittany") Brittany
+                        option(value="Balinese") Balinese
+                        option(value="Pointer") Pointer
+                        option(value="Sphynx") Sphynx
+                        option(value="Shiba") Shiba
+                div.form-group
+                    label(for='location') Location:
+                    input#location.form-control(type='text' name='location')
+                div.form-group
+                    label(for='latitude') Latitude:
+                    input#latitude.form-control(type='text' name='latitude')
+                div.form-group
+                    label(for='longitude') Longitude:
+                    input#longitude.form-control(type='text' name='longitude')
+                button.btn.btn-primary(type='submit') Add New Pet

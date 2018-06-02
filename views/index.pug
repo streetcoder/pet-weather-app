@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  div.container
+
+
+    //.col-md-12.text-center
+    //    button.btn.btn-primary(type="button" ) Add a Pet
+
+    h2.text-center Does my pet need umbrella
+    h4.text-center Select a pet to find out
+
+    hr
+
+    div.table-responsive
+      table.table.table-striped.table-sm
+        thead
+          tr
+            th(scope="col") Name
+            th(scope="col") Type
+            th(scope="col") Breed
+            th(scope="col")
+        tbody
+          each pet in data
+            tr
+                td #{pet.name}
+                td #{pet.type}
+                td #{pet.breed}
+                td
+                  a(href=api_base + end_point + '/' + pet.id) view
