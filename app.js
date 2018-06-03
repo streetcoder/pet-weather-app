@@ -9,6 +9,7 @@ var flash = require('express-flash');
 
 var indexRouter = require('./routes/index');
 var addRouter = require('./routes/add');
+var petRouter = require('./routes/pet');
 
 var app = express();
 var sessionStore = new session.MemoryStore;
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', addRouter);
+app.use('/', petRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
