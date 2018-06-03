@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var request = require("request");
 var env = require('dotenv').config();
+var mcache = require('memory-cache');
 
 if (process.env.NODE_ENV === 'dev') {
     var api_base = 'http://localhost:8080';
@@ -14,10 +15,28 @@ if (process.env.NODE_ENV === 'dev') {
 
 var endpoint = '/api/pet';
 
+var cache = function(duration) {
+    return function (req, res, next) {
+        var key = '__express__' + req.originalUrl || req.url;
+        var cachedBody = mcache.get(key);
+        if (cachedBody) {
+            res.send(cachedBody);
+            return
+        } else {
+            res.sendResponse = res.send;
+            res.send = function(body){
+                mcache.put(key, body, duration * 1000);
+                res.sendResponse(body)
+            };
+            next()
+        }
+    }
+};
+
 // cloudy sample:
 // New York, NY, USA
 // display individual pet
-router.get('/pet/:petId', function(req, res, next) {
+router.get('/pet/:petId', cache(10),function(req, res, next) {
 
     request.get(api_base + endpoint + '/' + req.params.petId, function (error, response, body) {
 
