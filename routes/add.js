@@ -26,7 +26,6 @@ router.post('/add', function(req, res, next) {
             {name:req.body.name,
              type:req.body.type,
              breed:req.body.breed,
-             location:req.body.location,
              latitude: req.body.latitude,
              longitude: req.body.longitude}},
         function(err,httpResponse,body){
@@ -38,7 +37,7 @@ router.post('/add', function(req, res, next) {
                 res.redirect('/add');
             }else{
                 req.flash('success', api_res.message);
-                res.redirect('/');
+                res.redirect('/pet/'+ api_res.pet_id);
             }
 
         });
