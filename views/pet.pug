@@ -23,7 +23,7 @@ block content
             span= messages.success
 
     .row
-        .col-md-4
+        .col-md-7
 
             ul.pet-details
                 each pet in data
@@ -34,7 +34,9 @@ block content
                     li Breed:
                         span #{pet.breed}
                     li Location:
-                        span #{pet.location}
+                        span.petaddress
+
+    input#latlng(type='hidden' value=latlng)
 
     hr
     h4.text-center.weatherheader.text-success Weather Forecast
@@ -45,11 +47,15 @@ block content
             .col-md-8
                 .weather-help
                     h4.text-center Yup!
-                    .alert.alert-info.text-center it's look like <strong>#{data[0].name}</strong> is going to need one in <strong>#{data[0].location}</strong>.
+                    .alert.alert-info.text-center it's look like <strong>#{data[0].name}</strong> is going to need one in <strong><span class="petaddress"></span></strong>.
                     p.lookup.text-center
                         a(href="/") Lookup a different pet
 
     else
-        .alert.alert-info.text-center <strong>#{data[0].name}</strong> does not need umbrella in <strong>#{data[0].location}</strong>.
+        .alert.alert-info.text-center <strong>#{data[0].name}</strong> does not need umbrella in <strong> <span class="petaddress"></span></strong>.
         p.lookup.text-center
             a(href="/") Lookup a different pet
+
+
+  script(src='/javascripts/main.js')
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQb-34Xnk5Zq_JqeuOFiLl_GzGF5uLsU&callback=get_address_by_lat_lng" async defer)

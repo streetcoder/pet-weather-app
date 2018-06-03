@@ -29,7 +29,7 @@ router.get('/pet/:petId', function(req, res, next) {
             request.get('https://api.darksky.net/forecast/53d06189d8f28de6f936c70f85fc7fb9/'+api_res[0].latitude+','+api_res[0].longitude+'', function (error, response, body) {
 
                 var darksky_res = JSON.parse(body);
-
+                var latlng = api_res[0].latitude + ',' + api_res[0].longitude
                 if(darksky_res.code == 400) {
                     req.flash('error', darksky_res.error);
                     res.render('pet', { data: api_res, is_umbrella: false });
@@ -43,7 +43,7 @@ router.get('/pet/:petId', function(req, res, next) {
                             is_umbrella = true;
                         }
                     }
-                    res.render('pet', { data: api_res, is_umbrella: is_umbrella });
+                    res.render('pet', { data: api_res, is_umbrella: is_umbrella, latlng:latlng });
                 }
 
             });
