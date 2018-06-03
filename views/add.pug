@@ -4,7 +4,7 @@ block content
 
   div.container
 
-    h2.text-center Add a New Pet
+    h3.text-center.text-success Add a New Pet
 
     hr
 
@@ -19,7 +19,7 @@ block content
     a(href='/' ) back to home
     .row
         .col-4.mx-auto.col-md-6
-            h3.display-8.m-b-2 Add Pet
+            h4.display-10.m-b-2.text-info Add Pet
 
             form(method='POST' action='/add')
                 div.form-group
@@ -44,10 +44,10 @@ block content
                     input#location.form-control(type='text' name='location' placeholder='Enter a Location' required)
                 div.form-group
                     label(for='latitude') Latitude:
-                    input#latitude.form-control(type='text' name='latitude' disabled required)
+                    input#latitude.form-control(type='text' name='latitude' required)
                 div.form-group
                     label(for='longitude') Longitude:
-                    input#longitude.form-control(type='text' name='longitude' disabled required)
+                    input#longitude.form-control(type='text' name='longitude' required)
                 button.btn.btn-primary(type='submit') Add New Pet
 
   script(src='/javascripts/main.js')

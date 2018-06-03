@@ -17,7 +17,7 @@ h1, h2, h3{
 }
 
 .pet-details{
-  font-size: 15px;
+  font-size: 12px;
   list-style: none;
   padding: 0;
   margin:0;
@@ -26,8 +26,24 @@ h1, h2, h3{
 .pet-details li{
   border-bottom: 1px solid #f2f2f2;
   padding: 5px 0;
+  width: 250px;
+  float: left;
 }
 
 .pet-details li span{
   font-weight: bold;
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.lookup{
+  padding-top: 10px !important;
+}
+h4.weatherheader{
+  font-size: 18px;
+}
+
+.weather-help h4{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

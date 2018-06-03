@@ -7,8 +7,11 @@ block content
 
     .row
 
+        .col-md-4
+            h4.text-success Pet Detail
         .col-md-6
-            h2 Pet Detail
+            p.lookup
+                a(href="/") Lookup a different pet
     hr
 
     if (messages.error)
@@ -24,7 +27,29 @@ block content
 
             ul.pet-details
                 each pet in data
-                    li <span> Name: </span>  #{pet.name}
-                    li <span> Type: </span>  #{pet.type}
-                    li <span> Breed: </span> #{pet.breed}
-                    li <span> Location: </span> #{pet.location}
+                    li Name:
+                        span #{pet.name}
+                    li Type:
+                        span #{pet.type}
+                    li Breed:
+                        span #{pet.breed}
+                    li Location:
+                        span #{pet.location}
+
+    hr
+    h4.text-center.weatherheader.text-success Weather Forecast
+    if (is_umbrella)
+        .row
+            .col-md-4
+                img.img-thumbnail(src="/images/pet_umbrella.jpg" alt="Pet Umbrella")
+            .col-md-8
+                .weather-help
+                    h4.text-center Yup!
+                    .alert.alert-info.text-center it's look like <strong>#{data[0].name}</strong> is going to need one in <strong>#{data[0].location}</strong>.
+                    p.lookup.text-center
+                        a(href="/") Lookup a different pet
+
+    else
+        .alert.alert-info.text-center <strong>#{data[0].name}</strong> does not need umbrella in <strong>#{data[0].location}</strong>.
+        p.lookup.text-center
+            a(href="/") Lookup a different pet
