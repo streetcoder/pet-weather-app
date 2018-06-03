@@ -41,11 +41,14 @@ block content
                         option(value="Shiba") Shiba
                 div.form-group
                     label(for='location') Location:
-                    input#location.form-control(type='text' name='location' required)
+                    input#location.form-control(type='text' name='location' placeholder='Enter a Location' required)
                 div.form-group
                     label(for='latitude') Latitude:
-                    input#latitude.form-control(type='text' name='latitude')
+                    input#latitude.form-control(type='text' name='latitude' disabled required)
                 div.form-group
                     label(for='longitude') Longitude:
-                    input#longitude.form-control(type='text' name='longitude')
+                    input#longitude.form-control(type='text' name='longitude' disabled required)
                 button.btn.btn-primary(type='submit') Add New Pet
+
+  script(src='/javascripts/main.js')
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQb-34Xnk5Zq_JqeuOFiLl_GzGF5uLsU&libraries=places&callback=initAutocomplete" async defer)
