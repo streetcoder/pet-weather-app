@@ -43,7 +43,7 @@ router.get('/pet/:petId', function(req, res, next) {
                             is_umbrella = true;
                         }
                     }
-                    res.render('pet', { data: api_res, is_umbrella: is_umbrella, latlng:latlng });
+                    res.render('pet', { data: api_res, is_umbrella: is_umbrella, latlng:latlng, title: 'Know more about it' });
                 }
 
             });

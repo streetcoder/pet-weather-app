@@ -20,8 +20,8 @@ router.get('/', function(req, res, next) {
 
         if(api_res.status == 'error')
             req.flash('error', api_res.message);
-
-        res.render('index', { data: JSON.parse(body) });
+        //{ title: 'Express' }
+        res.render('index', { data: JSON.parse(body), title: 'Welcome to Pet Weather App' });
 
     });
 

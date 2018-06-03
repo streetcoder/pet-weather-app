@@ -14,7 +14,7 @@ var endpoint = '/api/pets';
 // display for to add pet
 router.get('/add', function(req, res, next) {
 
-    res.render('add');
+    res.render('add', { title: 'Add a new Pet' });
 
 });
 
