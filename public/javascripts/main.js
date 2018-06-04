@@ -3,6 +3,12 @@
  */
 
 
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+    var api_base = 'http://localhost:8080';
+}else{
+    var api_base = 'https://api-pet-shelter.herokuapp.com';
+}
+
 // init autocomplete and get lat and lng
 function initAutocomplete() {
     var input = document.getElementById('location');
@@ -64,7 +70,7 @@ function initMap() {
 
     var infowindow = new google.maps.InfoWindow();
 
-    $.get( "http://localhost:8080/api/pets", function( data ) {
+    $.get( api_base + '/api/pets', function( data ) {
         for(var i = 0; i < data.length; i++ ){
 
             var latLng = new google.maps.LatLng(data[i].latitude,data[i].longitude);
