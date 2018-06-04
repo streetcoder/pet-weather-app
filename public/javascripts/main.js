@@ -51,3 +51,42 @@ function get_address_by_lat_lng() {
         }
     });
 }
+
+// display pet in interactive Google map
+var map;
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom:2,
+        //center: new google.maps.LatLng(28.535516,77.391026),
+        center: new google.maps.LatLng(46.0730555556, -100.546666667),
+        mapTypeId: 'terrain'
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    $.get( "http://localhost:8080/api/pets", function( data ) {
+        for(var i = 0; i < data.length; i++ ){
+
+            var latLng = new google.maps.LatLng(data[i].latitude,data[i].longitude);
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: data[i].latitude
+            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    var pet_html = "<ul class='pet_on_marker'><li>Name: " + data[i].name + "</li>" +
+                        "<li>Type: " + data[i].type + "</li>" +
+                        "<li>Breed: " + data[i].breed + "</li>" +
+                        "<li>Latitude: " + data[i].latitude + "</li>" +
+                        "<li>Longitude: " + data[i].longitude + "</li>" +
+                        "</ul>";
+                    infowindow.setContent(pet_html);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+
+        }
+    });
+}

@@ -45,3 +45,25 @@ h4.weatherheader{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.map-container{
+  height: 400px;
+  background: #e5e5e5;
+  width: 100%;
+}
+#map {
+  height: 100%;
+}
+.table-responsive tr td{
+  padding:5px;
+  font-size: 12px;
+}
+
+.pet_on_marker ul{
+  padding:0;
+  margin:0;
+}
+.pet_on_marker li{
+  list-style:  none;
+  margin:5px;
+}

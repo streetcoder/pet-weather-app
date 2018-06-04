@@ -23,19 +23,28 @@ block content
         .alert.alert-success
             span= messages.success
 
-    div.table-responsive
-      table.table.table-striped.table-sm
-        thead
-          tr
-            th(scope="col") Name
-            th(scope="col") Type
-            th(scope="col") Breed
-            th(scope="col")
-        tbody
-          each pet in data
-            tr
-                td #{pet.name}
-                td #{pet.type}
-                td #{pet.breed}
-                td
-                  a(href='/pet/' + pet.id) view
+    .row
+        .col-md-6
+            .map-container
+                div#map
+        .col-md-6
+            div.table-responsive
+              table.table.table-striped.table-sm
+                thead
+                  tr
+                    th(scope="col") Name
+                    th(scope="col") Type
+                    th(scope="col") Breed
+                    th(scope="col")
+                tbody
+                  each pet in data
+                    tr
+                        td #{pet.name}
+                        td #{pet.type}
+                        td #{pet.breed}
+                        td
+                          a(href='/pet/' + pet.id) view
+
+
+  script(src='/javascripts/main.js')
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQb-34Xnk5Zq_JqeuOFiLl_GzGF5uLsU&callback=initMap" async defer)
